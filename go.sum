@@ -12,6 +12,8 @@ github.com/whosonfirst/go-whosonfirst-cache v0.1.0 h1:ryWTsHj7gAEjwHC/WjsjROpFfl
 github.com/whosonfirst/go-whosonfirst-cache v0.1.0/go.mod h1:P5Tx34j2M50qX/kTfXY516apwGzJGkFSBYQI7TGArKw=
 github.com/whosonfirst/go-whosonfirst-cli v0.1.0 h1:Wwj9z0R/ryHmPmpVm5jCbXdG4agJzKMWXDtPVReN/KA=
 github.com/whosonfirst/go-whosonfirst-cli v0.1.0/go.mod h1:Edy+amD+fMq1QS1yxB3u8maA8I93q/LG7JRNh+fsdfc=
+github.com/whosonfirst/go-whosonfirst-reader v0.0.0-20191122203133-047f20452865 h1:1GYjmjunRhDm1E4/aM/AIhjBij8C9kMqufjS1G2P0fs=
+github.com/whosonfirst/go-whosonfirst-reader v0.0.0-20191122203133-047f20452865/go.mod h1:xYzBn6llLD/uS6Zhh0H4LAqddEJHXdQSUIxywTnhpOU=
 github.com/whosonfirst/go-whosonfirst-sources v0.1.0 h1:JuKLa6KWke22jBfJ1pM9WQHoz1/3pbDv2C+aR+THPPQ=
 github.com/whosonfirst/go-whosonfirst-sources v0.1.0/go.mod h1:EUMHyGzUmqPPxlMmOp+28BFeoBdxxE0HCKRd67lkqGM=
 github.com/whosonfirst/go-whosonfirst-uri v0.1.0 h1:JMlpam0x1hVrFBMTAPY3edIHz7azfMK8lLI2kM9BgbI=

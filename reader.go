@@ -3,7 +3,6 @@ package reader
 import (
 	"context"
 	"errors"
-	"github.com/whosonfirst/go-whosonfirst-uri"
 	"io"
 	"net/url"
 	"sort"
@@ -51,17 +50,6 @@ func NewReader(ctx context.Context, uri string) (Reader, error) {
 	}
 
 	return r, nil
-}
-
-func ReadFromID(ctx context.Context, r Reader, id int64) (io.ReadCloser, error) {
-
-	path, err := uri.Id2RelPath(id)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return r.Read(ctx, path)
 }
 
 func Register(name string, reader Reader) {
