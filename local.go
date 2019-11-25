@@ -10,22 +10,22 @@ import (
 )
 
 func init() {
-	r := NewFileReader()
-	Register("file", r)
+	r := NewLocalReader()
+	Register("local", r)
 }
 
-type FileReader struct {
+type LocalReader struct {
 	Reader
 	root string
 }
 
-func NewFileReader() Reader {
+func NewLocalReader() Reader {
 
-	r := FileReader{}
+	r := LocalReader{}
 	return &r
 }
 
-func (r *FileReader) Open(ctx context.Context, uri string) error {
+func (r *LocalReader) Open(ctx context.Context, uri string) error {
 
 	u, err := url.Parse(uri)
 
@@ -48,7 +48,7 @@ func (r *FileReader) Open(ctx context.Context, uri string) error {
 	return nil
 }
 
-func (r *FileReader) Read(ctx context.Context, path string) (io.ReadCloser, error) {
+func (r *LocalReader) Read(ctx context.Context, path string) (io.ReadCloser, error) {
 
 	abs_path := r.URI(path)
 
@@ -61,6 +61,6 @@ func (r *FileReader) Read(ctx context.Context, path string) (io.ReadCloser, erro
 	return os.Open(abs_path)
 }
 
-func (r *FileReader) URI(path string) string {
+func (r *LocalReader) URI(path string) string {
 	return filepath.Join(r.root, path)
 }
