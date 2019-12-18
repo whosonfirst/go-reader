@@ -21,6 +21,7 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
 	r, _ := reader.NewReader(ctx, "local:///usr/local/data")
 	fh, _ := r.Read(ctx, "example.txt")
 	defer fh.Close()
@@ -43,6 +44,7 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
 	r, _ := reader.NewReader(ctx, "null://")
 	fh, _ := r.Read(ctx, "example.txt")
 	defer fh.Close()
@@ -160,6 +162,7 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
 	r, _ := reader.NewReader(ctx, "https://data.whosonfirst.org")
 	fh, _ := r.Read(ctx, "101/736/545/101736545.geojson")
 	defer fh.Close()
@@ -171,24 +174,119 @@ func main() {
 
 ### "blob"
 
+Read files any registered [Go Cloud](https://gocloud.dev/howto/blob/) `Blob` source. For example:
+
+```
+import (
+	"context"
+	"github.com/whosonfirst/go-reader"
+	_ "github.com/whosonfirst/go-reader-blob"
+	_ "gocloud.dev/blob/s3blob"	
+)
+
+func main() {
+	ctx := context.Background()
+	r, _ := reader.NewReader(ctx, "s3://whosonfirst-data?region=us-west-1")
+}
+```
+
 * https://github.com/whosonfirst/go-reader-blob
 
 ### github://
+
+Read files a GitHub repository.
+
+```
+import (
+	"context"
+	"github.com/whosonfirst/go-reader"
+	_ "github.com/whosonfirst/go-reader-github"
+)
+
+func main() {
+	ctx := context.Background()
+	r, _ := reader.NewReader(ctx, "github://{GITHUB_OWNER}/{GITHUB_REPO}")
+
+	// to specify a specific branch you would do this:
+	// r, _ := reader.NewReader(ctx, "githubapi://{GITHUB_OWNER}/{GITHUB_REPO}/{GITHUB_BRANCH}")
+}
+```
 
 * https://github.com/whosonfirst/go-reader-github
 
 ### githubapi://
 
+Read files a GitHub repository using the GitHub API.
+
+```
+import (
+	"context"
+	"github.com/whosonfirst/go-reader"
+	_ "github.com/whosonfirst/go-reader-github"
+)
+
+func main() {
+	ctx := context.Background()
+	r, _ := reader.NewReader(ctx, "githubapi://{GITHUB_OWNER}/{GITHUB_REPO}?access_token={GITHUBAPI_ACCESS_TOKEN}")
+
+	// to specify a specific branch you would do this:
+	// r, _ := reader.NewReader(ctx, "githubapi://{GITHUB_OWNER}/{GITHUB_REPO}/{GITHUB_BRANCH}?access_token={GITHUBAPI_ACCESS_TOKEN}")
+}
+```
+
 * https://github.com/whosonfirst/go-reader-github
 
 ### http:// and https://
+
+Read files from an HTTP(S) endpoint.
+
+```
+import (
+	"context"
+	"github.com/whosonfirst/go-reader"
+	_ "github.com/whosonfirst/go-reader-http"
+)
+
+func main() {
+	ctx := context.Background()
+	r, _ := reader.NewReader(ctx, "https://{HTTP_HOST_AND_PATH}")
+}
+```
 
 * https://github.com/whosonfirst/go-reader-http
 
 ### local://
 
+Read files from a local filesystem.
+
+```
+import (
+	"context"
+	"github.com/whosonfirst/go-reader"
+)
+
+func main() {
+	ctx := context.Background()
+	r, _ := reader.NewReader(ctx, "local://{PATH_TO_DIRECTORY}")
+}
+```
+
 * https://github.com/whosonfirst/go-reader
 
 ### null://
+
+Pretend to read files.
+
+```
+import (
+	"context"
+	"github.com/whosonfirst/go-reader"
+)
+
+func main() {
+	ctx := context.Background()
+	r, _ := reader.NewReader(ctx, "null://")
+}
+```
 
 * https://github.com/whosonfirst/go-reader
