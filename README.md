@@ -2,7 +2,7 @@
 
 There are many interfaces for reading files. This one is ours. It returns `io.ReadCloser` instances.
 
-This package supersedes the [go-whosonfirst-readwrite](https://github.com/whosonfirst/go-whosonfirst-readwrite) package.
+_This package supersedes the [go-whosonfirst-readwrite](https://github.com/whosonfirst/go-whosonfirst-readwrite) package._
 
 ## Example
 
