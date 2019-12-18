@@ -22,14 +22,14 @@ import (
 
 func main() {
 	ctx := context.Background()
-	r, _ := reader.NewReader(ctx, "local:///usr/local/data")
+	r, _ := reader.NewReader(ctx, "fs:///usr/local/data")
 	fh, _ := r.Read(ctx, "example.txt")
 	defer fh.Close()
 	io.Copy(os.Stdout, fh)
 }
 ```
 
-Note the use of the `local://` scheme rather than the more conventional `file://`. This is deliberate so as not to overlap with the [Go Cloud](https://gocloud.dev/howto/blob/) `Blob` package's file handler.
+Note the use of the `fs://` scheme rather than the more conventional `file://`. This is deliberate so as not to overlap with the [Go Cloud](https://gocloud.dev/howto/blob/) `Blob` package's file handler.
 
 There is also a handy "null" reader in case you need a "pretend" reader that doesn't actually do anything:
 
@@ -174,7 +174,7 @@ func main() {
 
 ### "blob"
 
-Read files any registered [Go Cloud](https://gocloud.dev/howto/blob/) `Blob` source. For example:
+Read files from any registered [Go Cloud](https://gocloud.dev/howto/blob/) `Blob` source. For example:
 
 ```
 import (
@@ -194,7 +194,7 @@ func main() {
 
 ### github://
 
-Read files a GitHub repository.
+Read files from a GitHub repository.
 
 ```
 import (
@@ -216,7 +216,7 @@ func main() {
 
 ### githubapi://
 
-Read files a GitHub repository using the GitHub API.
+Read files from a GitHub repository using the GitHub API.
 
 ```
 import (
@@ -255,7 +255,7 @@ func main() {
 
 * https://github.com/whosonfirst/go-reader-http
 
-### local://
+### fs://
 
 Read files from a local filesystem.
 
@@ -267,7 +267,7 @@ import (
 
 func main() {
 	ctx := context.Background()
-	r, _ := reader.NewReader(ctx, "local://{PATH_TO_DIRECTORY}")
+	r, _ := reader.NewReader(ctx, "fs://{PATH_TO_DIRECTORY}")
 }
 ```
 
