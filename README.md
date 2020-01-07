@@ -4,6 +4,10 @@ There are many interfaces for reading files. This one is ours. It returns `io.Re
 
 _This package supersedes the [go-whosonfirst-readwrite](https://github.com/whosonfirst/go-whosonfirst-readwrite) package._
 
+## Important
+
+There is a known bug where creating two different `Reader` instances with the same scheme but different details does not work as expected.
+
 ## Example
 
 Readers are instantiated with the `reader.NewReader` method which takes as its arguments a `context.Context` instance and a URI string. The URI's scheme represents the type of reader it implements and the remaining (URI) properties are used by that reader type to instantiate itself.
