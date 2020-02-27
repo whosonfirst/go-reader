@@ -10,7 +10,7 @@ import (
 	"testing"
 )
 
-func TestLocalReader(t *testing.T) {
+func TestFSReader(t *testing.T) {
 
 	ctx := context.Background()
 
@@ -20,7 +20,7 @@ func TestLocalReader(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	source := fmt.Sprintf("local://%s/fixtures", cwd)
+	source := fmt.Sprintf("fs://%s/fixtures", cwd)
 	r, err := reader.NewReader(ctx, source)
 
 	if err != nil {
