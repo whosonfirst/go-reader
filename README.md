@@ -75,7 +75,7 @@ Should this interface have a `Close()` method? Maybe. We'll see.
 Custom readers need to:
 
 1. Implement the interface above.
-2. Announce their availability using the `go-reader.Register` method on initialization.
+2. Announce their availability using the `go-reader.RegisterReader` method on initialization, passing in an initialization function implementing the `go-reader.ReaderInitializationFunc` interface.
 
 For example, this is how the [go-reader-http](https://github.com/whosonfirst/go-reader-http) reader is implemented:
 
@@ -94,9 +94,34 @@ import (
 )
 
 func init() {
+
+	ctx := context.Background()
+
+	schemes := []string{
+		"http",
+		"https",			
+	}
+
+	for _, s := range schemes {
+	
+		err := wof_reader.RegisterReader(ctx, s, initializeHTTPReader)	
+
+		if err != nil {
+			panic(err)
+		}
+	}
+}
+
+func initializeHTTPReader(ctx context.Context, uri string) (wof_reader.Reader, error) {
+
 	r := NewHTTPReader()
-	wof_reader.Register("http", r)
-	wof_reader.Register("https", r)	
+	err := r.Open(ctx, uri)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return r, nil
 }
 
 type HTTPReader struct {
@@ -292,5 +317,3 @@ func main() {
 	r, _ := reader.NewReader(ctx, "null://")
 }
 ```
-
-* https://github.com/whosonfirst/go-reader
