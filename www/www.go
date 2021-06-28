@@ -1,4 +1,4 @@
-// package www provides common net/http handlers for reader-related HTTP request.
+// package www provides common net/http handlers for reader-related HTTP requests.
 package www
 
 import (
