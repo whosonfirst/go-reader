@@ -14,6 +14,8 @@ github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d/go.mod h1
 github.com/smartystreets/goconvey v0.0.0-20190330032615-68dc04aab96a/go.mod h1:syvi0/a8iFYH4r/RixwvyeAJjdLS9QV7WQ/tjFTllLA=
 github.com/whosonfirst/go-ioutil v0.0.1 h1:cCrEYen6NDvHfjzV2q4u/VB21u2kTOwDnUGRlMI8Z9o=
 github.com/whosonfirst/go-ioutil v0.0.1/go.mod h1:2dS1vWdAIkiHDvDF8fYyjv6k2NISmwaIjJJeEDBEdvg=
+github.com/whosonfirst/go-ioutil v1.0.0 h1:sYpgJx7Wsp76e7PFGa8KKQBvWQW3+HMCWSJbKdD5m14=
+github.com/whosonfirst/go-ioutil v1.0.0/go.mod h1:2dS1vWdAIkiHDvDF8fYyjv6k2NISmwaIjJJeEDBEdvg=
 github.com/whosonfirst/go-whosonfirst-cache v0.1.0 h1:ryWTsHj7gAEjwHC/WjsjROpFflsz3SCa7W9Qnk4EU7k=
 github.com/whosonfirst/go-whosonfirst-cache v0.1.0/go.mod h1:P5Tx34j2M50qX/kTfXY516apwGzJGkFSBYQI7TGArKw=
 github.com/whosonfirst/go-whosonfirst-cli v0.1.0 h1:Wwj9z0R/ryHmPmpVm5jCbXdG4agJzKMWXDtPVReN/KA=
