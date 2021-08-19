@@ -317,3 +317,32 @@ func main() {
 ## See also
 
 * https://github.com/whosonfirst/go-writer
+
+### stdin://
+
+Read "files" from `STDIN`
+
+```
+import (
+	"context"
+	"github.com/whosonfirst/go-reader"
+)
+
+func main() {
+	ctx := context.Background()
+	r, _ := reader.NewReader(ctx, "stdin://")
+}
+```
+
+And then to use, something like:
+
+```
+> cat README.md | ./bin/read -reader-uri stdin:// - | wc -l
+     339
+```
+
+Note the use of `-` for a URI. This is the convention (when reading from STDIN) but it can be whatever you want it to be.
+
+## See also
+
+* https://github.com/whosonfirst/go-writer
