@@ -26,14 +26,12 @@ import (
 
 func main() {
 	ctx := context.Background()
-	r, _ := reader.NewReader(ctx, "fs:///usr/local/data")
+	r, _ := reader.NewReader(ctx, "file:///usr/local/data")
 	fh, _ := r.Read(ctx, "example.txt")
 	defer fh.Close()
 	io.Copy(os.Stdout, fh)
 }
 ```
-
-Note the use of the `fs://` scheme rather than the more conventional `file://`. This is deliberate so as not to overlap with the [Go Cloud](https://gocloud.dev/howto/blob/) `Blob` package's file handler.
 
 There is also a handy "null" reader in case you need a "pretend" reader that doesn't actually do anything:
 
@@ -290,6 +288,12 @@ func main() {
 	ctx := context.Background()
 	r, _ := reader.NewReader(ctx, "file://{PATH_TO_DIRECTORY}")
 }
+```
+
+If you are importing the `go-reader-blob` package and using the GoCloud's [fileblob](https://gocloud.dev/howto/blob/#local) driver then instantiating the `file://` scheme will fail since it will have already been registered. You can work around this by using the `fs://` scheme. For example:
+
+```
+r, _ := reader.NewReader(ctx, "fs://{PATH_TO_DIRECTORY}")
 ```
 
 * https://github.com/whosonfirst/go-reader
