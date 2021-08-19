@@ -1,8 +1,7 @@
-package tests
+package reader
 
 import (
 	"context"
-	"github.com/whosonfirst/go-reader"
 	"io"
 	"io/ioutil"
 	"testing"
@@ -12,7 +11,7 @@ func TestNullReader(t *testing.T) {
 
 	ctx := context.Background()
 
-	r, err := reader.NewReader(ctx, "null:/")
+	r, err := NewReader(ctx, "null:/")
 
 	if err != nil {
 		t.Fatal(err)

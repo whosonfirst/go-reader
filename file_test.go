@@ -1,9 +1,8 @@
-package tests
+package reader
 
 import (
 	"context"
 	"fmt"
-	"github.com/whosonfirst/go-reader"
 	"io"
 	"io/ioutil"
 	"os"
@@ -21,7 +20,7 @@ func TestFSReader(t *testing.T) {
 	}
 
 	source := fmt.Sprintf("file://%s/fixtures", cwd)
-	r, err := reader.NewReader(ctx, source)
+	r, err := NewReader(ctx, source)
 
 	if err != nil {
 		t.Fatal(err)

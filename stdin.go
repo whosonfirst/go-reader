@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"context"
-	"fmt"
 	"github.com/whosonfirst/go-ioutil"
 	"io"
 	"os"
@@ -48,5 +47,5 @@ func (r *StdinReader) Read(ctx context.Context, uri string) (io.ReadSeekCloser, 
 }
 
 func (r *StdinReader) ReaderURI(ctx context.Context, uri string) string {
-	return fmt.Sprintf("stdin://%s", uri)
+	return "-"
 }
