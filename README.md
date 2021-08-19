@@ -313,3 +313,7 @@ func main() {
 	r, _ := reader.NewReader(ctx, "null://")
 }
 ```
+
+## See also
+
+* https://github.com/whosonfirst/go-writer
