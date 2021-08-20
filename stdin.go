@@ -1,12 +1,11 @@
 package reader
 
 import (
-	"bufio"
-	"bytes"
 	"context"
-	"github.com/whosonfirst/go-ioutil"
 	"io"
 	"os"
+
+	"github.com/whosonfirst/go-ioutil"
 )
 
 type StdinReader struct {
@@ -30,20 +29,7 @@ func NewStdinReader(ctx context.Context, uri string) (Reader, error) {
 }
 
 func (r *StdinReader) Read(ctx context.Context, uri string) (io.ReadSeekCloser, error) {
-
-	var b bytes.Buffer
-	wr := bufio.NewWriter(&b)
-
-	_, err := io.Copy(wr, os.Stdin)
-
-	if err != nil {
-		return nil, err
-	}
-
-	wr.Flush()
-
-	br := bytes.NewReader(b.Bytes())
-	return ioutil.NewReadSeekCloser(br)
+	return ioutil.NewReadSeekCloser(os.Stdin)
 }
 
 func (r *StdinReader) ReaderURI(ctx context.Context, uri string) string {
