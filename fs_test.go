@@ -19,7 +19,8 @@ func TestFSReader(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	source := fmt.Sprintf("file://%s/fixtures", cwd)
+	source := fmt.Sprintf("fs://%s/fixtures", cwd)
+
 	r, err := NewReader(ctx, source)
 
 	if err != nil {
