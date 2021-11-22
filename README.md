@@ -227,7 +227,7 @@ func main() {
 	r, _ := reader.NewReader(ctx, "github://{GITHUB_OWNER}/{GITHUB_REPO}")
 
 	// to specify a specific branch you would do this:
-	// r, _ := reader.NewReader(ctx, "github://{GITHUB_OWNER}/{GITHUB_REPO}/{GITHUB_BRANCH}")
+	// r, _ := reader.NewReader(ctx, "github://{GITHUB_OWNER}/{GITHUB_REPO}?branch={GITHUB_BRANCH}")
 }
 ```
 
