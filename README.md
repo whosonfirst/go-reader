@@ -314,6 +314,24 @@ func main() {
 }
 ```
 
+### repo://
+
+This is a convenience scheme for working with Who's On First data repositories.
+
+It will update a URI by appending a `data` directory to its path and changing its scheme to `fs://` before invoking `reader.NewReader` with the updated URI.
+
+```
+import (
+	"context"
+	"github.com/whosonfirst/go-reader"
+)
+
+func main() {
+	ctx := context.Background()
+	r, _ := reader.NewReader(ctx, "repo:///usr/local/data/whosonfirst-data-admin-ca")
+}
+```
+
 ## See also
 
 * https://github.com/whosonfirst/go-writer
