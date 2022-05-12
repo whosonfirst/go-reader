@@ -20,7 +20,7 @@ type ReaderInitializationFunc func(ctx context.Context, uri string) (Reader, err
 type Reader interface {
 	// Reader returns a `io.ReadSeekCloser` instance for a URI resolved by the instance implementing the `Reader` interface.
 	Read(context.Context, string) (io.ReadSeekCloser, error)
-	// The absolute path for the file is determined by the instance implementing the `Reader` interface.	
+	// The absolute path for the file is determined by the instance implementing the `Reader` interface.
 	ReaderURI(context.Context, string) string
 }
 

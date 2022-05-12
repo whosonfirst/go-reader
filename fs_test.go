@@ -26,7 +26,7 @@ func TestFSReader(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	
+
 	to_test := []string{
 		"101/736/545/101736545.geojson",
 		"101/736/545/101736545.geojson.bz2",
@@ -35,17 +35,17 @@ func TestFSReader(t *testing.T) {
 	for _, path := range to_test {
 
 		fmt.Printf("Read %s\n", path)
-		
+
 		fh, err := r.Read(ctx, path)
-		
+
 		if err != nil {
 			t.Fatalf("Failed to read %s, %v", path, err)
 		}
-		
+
 		defer fh.Close()
-		
+
 		_, err = io.Copy(ioutil.Discard, fh)
-		
+
 		if err != nil {
 			t.Fatalf("Failed to copy %s, %v", path, err)
 		}
