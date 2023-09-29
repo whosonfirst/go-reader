@@ -8,8 +8,8 @@ import (
 	"log/slog"
 	"os"
 
+	"github.com/sfomuseum/go-flags/flagset"
 	"github.com/whosonfirst/go-reader/v2"
-	"github.com/sfomuseum/go-flags/flagset"	
 )
 
 func Run(ctx context.Context, logger *slog.Logger) error {
@@ -21,11 +21,11 @@ func Run(ctx context.Context, logger *slog.Logger) error {
 func RunWithFlagSet(ctx context.Context, fs *flag.FlagSet, logger *slog.Logger) error {
 
 	flagset.Parse(fs)
-	
+
 	r, err := reader.NewReader(ctx, reader_uri)
 
 	if err != nil {
-		return fmt.Errorf("Failed to create new reader, %v", err)
+		return fmt.Errorf("Failed to create new reader, %w", err)
 	}
 
 	err = r.SetLogger(ctx, logger)
@@ -33,7 +33,7 @@ func RunWithFlagSet(ctx context.Context, fs *flag.FlagSet, logger *slog.Logger) 
 	if err != nil {
 		return fmt.Errorf("Failed to set logger, %w", err)
 	}
-	
+
 	for _, path := range fs.Args() {
 
 		fh, err := r.Read(ctx, path)

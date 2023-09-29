@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 	"os"
-	
+
 	"github.com/whosonfirst/go-reader/v2/app/read"
 )
 

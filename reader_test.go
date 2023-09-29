@@ -14,7 +14,7 @@ func TestSchemes(t *testing.T) {
 
 	str_schemes := strings.Join(schemes, " ")
 
-	if str_schemes != "fs:// null:// repo:// stdin://" {
+	if str_schemes != "cwd:// fs:// null:// repo:// stdin://" {
 		t.Fatalf("Unexpected schemes: '%s'", str_schemes)
 	}
 }

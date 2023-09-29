@@ -12,7 +12,7 @@ func DefaultFlagSet() *flag.FlagSet {
 
 	fs := flagset.NewFlagSet("read")
 
-	fs.StringVar(&reader_uri, "reader-uri", "fs://", "A valid whosonfirst/go-reader/v2 URI")
+	fs.StringVar(&reader_uri, "reader-uri", "cwd://", "A valid whosonfirst/go-reader/v2 URI")
 
 	return fs
 }
