@@ -5,12 +5,13 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"log/slog"
 	"net/url"
 	"os"
 	"path/filepath"
 	"strconv"
 
-	"github.com/whosonfirst/go-ioutil"	
+	"github.com/whosonfirst/go-ioutil"
 )
 
 // FileReader is a struct that implements the `Reader` interface for reading documents from files on a local disk.
@@ -18,6 +19,7 @@ type FileReader struct {
 	Reader
 	root      string
 	allow_bz2 bool
+	logger    *slog.Logger
 }
 
 func init() {
@@ -57,8 +59,11 @@ func NewFileReader(ctx context.Context, uri string) (Reader, error) {
 		return nil, fmt.Errorf("Root (%s) is not a directory", root)
 	}
 
+	logger := DefaultLogger()
+
 	r := &FileReader{
-		root: root,
+		root:   root,
+		logger: logger,
 	}
 
 	q := u.Query()
@@ -117,4 +122,10 @@ func (r *FileReader) Read(ctx context.Context, path string) (io.ReadSeekCloser, 
 // ReaderURI returns the absolute URL for 'path'.
 func (r *FileReader) ReaderURI(ctx context.Context, path string) string {
 	return filepath.Join(r.root, path)
+}
+
+// SetLogger assigns 'logger' to 'r'.
+func (r *FileReader) SetLogger(ctx context.Context, logger *slog.Logger) error {
+	r.logger = logger
+	return nil
 }

@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/whosonfirst/go-reader/v2"	
+	"github.com/whosonfirst/go-reader/v2"
 )
 
 func main() {

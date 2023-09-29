@@ -2,9 +2,11 @@ package reader
 
 import (
 	"context"
-	"github.com/whosonfirst/go-ioutil"
 	"io"
+	"log/slog"
 	"os"
+
+	"github.com/whosonfirst/go-ioutil"
 )
 
 // Constant string value representing STDIN.
@@ -13,6 +15,7 @@ const STDIN string = "-"
 // StdinReader is a struct that implements the `Reader` interface for reading documents from STDIN.
 type StdinReader struct {
 	Reader
+	logger *slog.Logger
 }
 
 func init() {
@@ -33,7 +36,12 @@ func init() {
 // Technically 'uri' can also be an empty string.
 func NewStdinReader(ctx context.Context, uri string) (Reader, error) {
 
-	r := &StdinReader{}
+	logger := DefaultLogger()
+
+	r := &StdinReader{
+		logger: logger,
+	}
+
 	return r, nil
 }
 
@@ -45,4 +53,10 @@ func (r *StdinReader) Read(ctx context.Context, uri string) (io.ReadSeekCloser, 
 // ReaderURI will return the value of the `STDIN` constant.
 func (r *StdinReader) ReaderURI(ctx context.Context, uri string) string {
 	return STDIN
+}
+
+// SetLogger assigns 'logger' to 'r'.
+func (r *StdinReader) SetLogger(ctx context.Context, logger *slog.Logger) error {
+	r.logger = logger
+	return nil
 }

@@ -4,10 +4,11 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/hashicorp/go-multierror"
 	"io"
-	_ "log"
+	"log/slog"
 	"sync"
+
+	"github.com/hashicorp/go-multierror"
 )
 
 // MultiReader is a struct that implements the `Reader` interface for reading documents from one or more `Reader` instances.
@@ -134,4 +135,19 @@ func (mr *MultiReader) ReaderURI(ctx context.Context, path string) string {
 	defer r.Close()
 
 	return mr.ReaderURI(ctx, path)
+}
+
+// SetLogger assigns 'logger' to all the `reader.Reader` instances encapsulated by 'r'.
+func (mr *MultiReader) SetLogger(ctx context.Context, logger *slog.Logger) error {
+
+	for _, r := range mr.readers {
+
+		err := r.SetLogger(ctx, logger)
+
+		if err != nil {
+			return fmt.Errorf("Failed to assign logger to '%T' reader, %w", r, err)
+		}
+	}
+
+	return nil
 }

@@ -3,8 +3,10 @@ package reader
 import (
 	"bytes"
 	"context"
-	"github.com/whosonfirst/go-ioutil"
 	"io"
+	"log/slog"
+
+	"github.com/whosonfirst/go-ioutil"
 )
 
 // NullReader is a struct that implements the `Reader` interface for reading documents from nowhere.
@@ -43,4 +45,9 @@ func (r *NullReader) Read(ctx context.Context, path string) (io.ReadSeekCloser, 
 // ReaderURI returns the value of 'path'.
 func (r *NullReader) ReaderURI(ctx context.Context, path string) string {
 	return path
+}
+
+// SetLogger assigns 'logger' to 'r'.
+func (r *NullReader) SetLogger(ctx context.Context, logger *slog.Logger) error {
+	return nil
 }
