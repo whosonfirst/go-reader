@@ -2,45 +2,21 @@ package main
 
 import (
 	"context"
-	"flag"
-	"io"
-	"log"
+	"log/slog"
 	"os"
-
-	"github.com/whosonfirst/go-reader/v2"
+	
+	"github.com/whosonfirst/go-reader/v2/app/read"
 )
 
 func main() {
 
-	reader_uri := flag.String("reader-uri", "file://", "")
-
-	flag.Parse()
-
-	uris := flag.Args()
-
 	ctx := context.Background()
+	logger := slog.Default()
 
-	r, err := reader.NewReader(ctx, *reader_uri)
+	err := read.Run(ctx, logger)
 
 	if err != nil {
-		log.Fatalf("Failed to create new reader, %v", err)
+		logger.Error("Failed to create new reader, %v", err)
+		os.Exit(1)
 	}
-
-	for _, path := range uris {
-
-		fh, err := r.Read(ctx, path)
-
-		if err != nil {
-			log.Fatalf("Failed to read '%s', %v", path, err)
-		}
-
-		defer fh.Close()
-
-		_, err = io.Copy(os.Stdout, fh)
-
-		if err != nil {
-			log.Fatalf("Failed to copy contents of '%s' to STDOUT, %v", path, err)
-		}
-	}
-
 }
