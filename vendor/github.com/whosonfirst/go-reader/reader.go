@@ -3,13 +3,11 @@ package reader
 import (
 	"context"
 	"fmt"
+	"github.com/aaronland/go-roster"
 	"io"
-	"log/slog"
 	"net/url"
 	"sort"
 	"strings"
-
-	"github.com/aaronland/go-roster"	
 )
 
 var reader_roster roster.Roster
@@ -24,8 +22,6 @@ type Reader interface {
 	Read(context.Context, string) (io.ReadSeekCloser, error)
 	// The absolute path for the file is determined by the instance implementing the `Reader` interface.
 	ReaderURI(context.Context, string) string
-	// SetLogger assigns a custom logger to a `Writer` instance
-	SetLogger(context.Context, *slog.Logger) error
 }
 
 // RegisterReader registers 'scheme' as a key pointing to 'init_func' in an internal lookup table

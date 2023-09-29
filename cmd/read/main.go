@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/whosonfirst/go-reader"
 	"io"
 	"log"
 	"os"
+
+	"github.com/whosonfirst/go-reader/v2"	
 )
 
 func main() {
