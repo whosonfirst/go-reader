@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"log"
-	
+
 	"github.com/whosonfirst/go-reader/app/read"
 )
 
