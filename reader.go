@@ -3,11 +3,12 @@ package reader
 import (
 	"context"
 	"fmt"
-	"github.com/aaronland/go-roster"
 	"io"
 	"net/url"
 	"sort"
 	"strings"
+
+	"github.com/aaronland/go-roster"
 )
 
 var reader_roster roster.Roster
@@ -20,6 +21,8 @@ type ReaderInitializationFunc func(ctx context.Context, uri string) (Reader, err
 type Reader interface {
 	// Reader returns a `io.ReadSeekCloser` instance for a URI resolved by the instance implementing the `Reader` interface.
 	Read(context.Context, string) (io.ReadSeekCloser, error)
+	// Exists returns a boolean value indicating whether a URI already exists.
+	Exists(context.Context, string) (bool, error)
 	// The absolute path for the file is determined by the instance implementing the `Reader` interface.
 	ReaderURI(context.Context, string) string
 }

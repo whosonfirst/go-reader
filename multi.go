@@ -4,10 +4,10 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/hashicorp/go-multierror"
 	"io"
-	_ "log"
 	"sync"
+
+	"github.com/hashicorp/go-multierror"
 )
 
 // MultiReader is a struct that implements the `Reader` interface for reading documents from one or more `Reader` instances.
@@ -54,6 +54,11 @@ func NewMultiReader(ctx context.Context, readers ...Reader) (Reader, error) {
 	return &mr, nil
 }
 
+// Exists returns a boolean value indicating whether 'path' already exists.
+func (mr *MultiReader) Exists(ctx context.Context, path string) (bool, error) {
+	return false, fmt.Errorf("Not implemented")
+}
+
 // Read will open an `io.ReadSeekCloser` for a file matching 'path'. In the case of multiple underlying
 // `Reader` instances the first instance to successfully load 'path' will be returned.
 func (mr *MultiReader) Read(ctx context.Context, path string) (io.ReadSeekCloser, error) {
@@ -93,12 +98,9 @@ func (mr *MultiReader) Read(ctx context.Context, path string) (io.ReadSeekCloser
 
 			fh = rsp
 			idx = i
-
 			break
 		}
 	}
-
-	// log.Printf("SET MULTIREADER LOOKUP INDEX FOR %s AS %d\n", path, idx)
 
 	mr.mu.Lock()
 	mr.lookup[path] = idx
