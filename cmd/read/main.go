@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/whosonfirst/go-reader/app/read"
+	"github.com/whosonfirst/go-reader/v2/app/read"
 )
 
 func main() {

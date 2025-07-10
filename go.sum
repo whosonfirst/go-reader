@@ -8,3 +8,7 @@ github.com/sfomuseum/go-flags v0.10.0 h1:1OC1ACxpWMsl3XQ9OeNVMQj7Zi2CzufP3Rym3mP
 github.com/sfomuseum/go-flags v0.10.0/go.mod h1:VXOnnX1/yxQpX2yiwHaBV6aCmhtszQOL5bL1/nNo3co=
 github.com/whosonfirst/go-ioutil v1.0.2 h1:+GJPfa42OFn5A+5yJSc5jQTQIkNV3/MhYyg4pavdrC8=
 github.com/whosonfirst/go-ioutil v1.0.2/go.mod h1:2dS1vWdAIkiHDvDF8fYyjv6k2NISmwaIjJJeEDBEdvg=
+github.com/whosonfirst/go-whosonfirst-sources v0.1.0 h1:JuKLa6KWke22jBfJ1pM9WQHoz1/3pbDv2C+aR+THPPQ=
+github.com/whosonfirst/go-whosonfirst-sources v0.1.0/go.mod h1:EUMHyGzUmqPPxlMmOp+28BFeoBdxxE0HCKRd67lkqGM=
+github.com/whosonfirst/go-whosonfirst-uri v1.3.0 h1:LYOVLqP9rWQxauYVkdw65j5LZxEi8OK0GHh/qCEpX4g=
+github.com/whosonfirst/go-whosonfirst-uri v1.3.0/go.mod h1:CuVygTCUpMG945MMvqHyqxvc/L5YkDaMrrVpRFr7ZxY=

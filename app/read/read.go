@@ -8,7 +8,7 @@ import (
 	_ "log/slog"
 	"os"
 
-	"github.com/whosonfirst/go-reader"
+	"github.com/whosonfirst/go-reader/v2"
 )
 
 func Run(ctx context.Context) error {
