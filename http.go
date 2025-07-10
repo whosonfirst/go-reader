@@ -12,6 +12,7 @@ import (
 	"github.com/whosonfirst/go-ioutil"
 )
 
+// HTTPReader is a struct that implements the `Reader` interface for reading documents from an HTTP(S) resource.
 type HTTPReader struct {
 	Reader
 	url        *url.URL
@@ -38,6 +39,13 @@ func init() {
 	}
 }
 
+// NewStdinReader returns a new `Reader` instance for reading documents from an HTTP(s) resource,
+// configured by 'uri' in the form of:
+//
+//	http(s)://{HOST}?{PARAMS}
+//
+// Where {PARAMS} can be:
+// * user-agent - An optional user agent string to include with requests.
 func NewHTTPReader(ctx context.Context, uri string) (Reader, error) {
 
 	u, err := url.Parse(uri)
@@ -64,6 +72,7 @@ func NewHTTPReader(ctx context.Context, uri string) (Reader, error) {
 	return &r, nil
 }
 
+// Exists returns a boolean value indicating whether 'path' already exists.
 func (r *HTTPReader) Exists(ctx context.Context, uri string) (bool, error) {
 
 	<-r.throttle
@@ -100,6 +109,7 @@ func (r *HTTPReader) Exists(ctx context.Context, uri string) (bool, error) {
 	return true, nil
 }
 
+// Read will open a `io.ReadSeekCloser` for the resource located at 'uri'.
 func (r *HTTPReader) Read(ctx context.Context, uri string) (io.ReadSeekCloser, error) {
 
 	<-r.throttle
@@ -140,6 +150,7 @@ func (r *HTTPReader) Read(ctx context.Context, uri string) (io.ReadSeekCloser, e
 	return fh, nil
 }
 
+// ReaderURI returns 'uri'.
 func (r *HTTPReader) ReaderURI(ctx context.Context, uri string) string {
 	return uri
 }

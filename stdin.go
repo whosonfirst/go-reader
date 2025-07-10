@@ -25,7 +25,7 @@ func init() {
 	}
 }
 
-// NewStdinReader returns a new `FileReader` instance for reading documents from STDIN,
+// NewStdinReader returns a new `Reader` instance for reading documents from STDIN,
 // configured by 'uri' in the form of:
 //
 //	stdin://
