@@ -80,8 +80,8 @@ func NewReader(ctx context.Context, uri string) (Reader, error) {
 	return init_func(ctx, uri)
 }
 
-// Schemes returns the list of schemes that have been registered.
-func Schemes() []string {
+// ReaderSchemes returns the list of schemes that have been registered.
+func ReaderSchemes() []string {
 
 	ctx := context.Background()
 	schemes := []string{}
