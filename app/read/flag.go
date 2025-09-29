@@ -4,7 +4,7 @@ import (
 	"flag"
 
 	"github.com/sfomuseum/go-flags/flagset"
-	"github.com/sfomuseum/go-flags/multi"	
+	"github.com/sfomuseum/go-flags/multi"
 )
 
 var reader_uris multi.MultiString
