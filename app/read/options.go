@@ -8,9 +8,9 @@ import (
 )
 
 type RunOptions struct {
-	ReaderURI string   `json:"reader_uri"`
-	Paths     []string `json:"paths"`
-	Verbose   bool     `json:"verbose"`
+	ReaderURIs []string `json:"reader_uri"`
+	Paths      []string `json:"paths"`
+	Verbose    bool     `json:"verbose"`
 }
 
 func RunOptionsFromFlagSet(fs *flag.FlagSet) (*RunOptions, error) {
@@ -26,9 +26,9 @@ func RunOptionsFromFlagSet(fs *flag.FlagSet) (*RunOptions, error) {
 	paths := fs.Args()
 
 	opts := &RunOptions{
-		ReaderURI: reader_uri,
-		Paths:     paths,
-		Verbose:   verbose,
+		ReaderURIs: reader_uris,
+		Paths:      paths,
+		Verbose:    verbose,
 	}
 
 	return opts, nil

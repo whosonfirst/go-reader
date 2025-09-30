@@ -35,6 +35,8 @@ func TestNewReader(t *testing.T) {
 
 			continue
 
+		case "multi://":
+			uri = "multi://?reader=null://&reader=cwd://"
 		default:
 			uri = s
 		}

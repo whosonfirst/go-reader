@@ -34,7 +34,7 @@ func RunWithOptions(ctx context.Context, opts *RunOptions) error {
 
 	}
 
-	r, err := reader.NewReader(ctx, opts.ReaderURI)
+	r, err := reader.NewMultiReaderFromURIs(ctx, opts.ReaderURIs...)
 
 	if err != nil {
 		return fmt.Errorf("Failed to create new reader, %w", err)
